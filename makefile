@@ -42,6 +42,8 @@ dynamic: $(EFILE)
 
 
 $(EFILE): $(OFILE)
+	mkdir -p obj
+	mkdir -p bin
 	$(CXX) $^ $(HOME)/commands/htslib-1.9/libhts.a -o $@ $(LFLAG)
 
 obj/%.o: %.cpp $(HFILE)
