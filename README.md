@@ -1,6 +1,8 @@
 # <b style="color:red">B</b>cf<b style="color:red">B</b>reeder
 
-<center><img src="illustration.png"/></center>
+<p align="center">
+    <img src="illustration.png"/>
+</p>
 
 
 <b>Usage</b>:
