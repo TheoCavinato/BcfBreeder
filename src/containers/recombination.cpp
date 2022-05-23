@@ -72,9 +72,9 @@ void recombination::simulateRecombination(int n_samples, string recvalid){
     haploToSelect.push_back(variant_haplos);
     variant_haplos.clear();
 
-    output_file fd(recvalid);
     double random_double;
 
+    vector<int> save_rec_sites;
 
     for (int i =0; i < bcfRecRateBtwPos.size(); i++){
         for (int j=0; j<n_samples*2; j++){
@@ -83,7 +83,8 @@ void recombination::simulateRecombination(int n_samples, string recvalid){
             if (random_double < bcfRecRateBtwPos[i]){
                 if (haploToSelect[i][j] == 0) variant_haplos.push_back(1);
                 else variant_haplos.push_back(0);
-                fd << bcfPosBp[i] << endl;
+                // write recombination sites if --recvalid option activated
+                if (recvalid!="None") save_rec_sites.push_back(bcfPosBp[i]);
             }
             else{
                 variant_haplos.push_back(haploToSelect[i][j]);
@@ -92,7 +93,14 @@ void recombination::simulateRecombination(int n_samples, string recvalid){
         haploToSelect.push_back(variant_haplos);
         variant_haplos.clear();
     }
-    fd.close();
+
+    // if --recvalid option is on
+    if (recvalid!="None") {
+        output_file fd(recvalid);
+        for(int i : save_rec_sites) fd << i << endl;
+        fd.close();
+    }
+
 	vrb.bullet("Simulate recombination sites (" + stb.str(tac.rel_time()*1.0/1000, 2) + "s)");
 
 }

@@ -8,17 +8,17 @@
 void tool::runMainTask() {
 	vrb.title("Compute main TASK");
 
-	//Put all analytical work here.
-	//OK
-
 	int n_offspring = PED.offspring.size();
 
-	//simulate recombination sites -> OK
+	//simulate recombination sites
 	REC_SITES.readBcfPos(options["vcf"].as < string > (), GMAP.pos_bp[0], GMAP.pos_bp.back());
 	REC_SITES.bpToRecRate(GMAP.pos_bp, GMAP.pos_cm);
-	REC_SITES.simulateRecombination(n_offspring, options["recvalid"].as < string > ());
 
-	//read bcf and write simulated individuals -> PAS OK
+	string valid_path="None";
+	if (options.count("recvalid")) valid_path = options["recvalid"].as < string > ();
+	REC_SITES.simulateRecombination(n_offspring, valid_path);
+
+	//read bcf and write simulated individuals
 	GEN.readAndWriteGenotypes(options["vcf"].as < string > (), options["output"].as <string> (), options["region"].as < string > (), PED.founders, PED.offspring, PED.parents_idxs, REC_SITES.haploToSelect, GMAP.pos_bp[0], GMAP.pos_bp.back());
 
 }

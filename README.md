@@ -6,15 +6,16 @@
 
 ## Quick Start
 <b>B</b>cf<b>B</b>reeder simulate offspring genomes based on given parental genomes.  \
-<b>INPUT</b> :
+<b>INPUT</b>:
 - a <b>pedigree</b> in PLINK's format
 - a <b> phased bcf/vcf </b> containing the founders of the pedigree
 - <b>recombination maps</b>
 
-<b>OUTPUT</b> :
+<b>OUTPUT</b>:
 - a <b>phased bcf/vcf</b> containing the genomes of founders and offspring
+- (optional: if you add <i>--recvalid <PATH_TO_VALIDATION></i> all the recombination sites will be written into <PATH_TO_VALIDATION>. I made this option for the validation of the method.)
 
-To run BcfBreeder use the following command : \
+To run BcfBreeder use the following command: \
 `./bin/toy --vcf <PATH_TO_INPUT_VCF> --region <CHROMOSOME> --output <OUTPUT_VCF_PATH> --map <PATH_TO_RECOMBINATION_MAP> --ped <PATH_TO_PEDIGREE> --seed <SEED_TO_SET_RANDOMNESS>`
 
 You can run an example with the following command: \
