@@ -40,11 +40,17 @@ void ped_reader::readPed(string ped_path){
 	if (fd_ped.fail()) vrb.error("Cannot open ped file");
 	while (getline(fd_ped, buffer, '\n')) {
 		stb.split(buffer, tokens);
-        if (tokens[2]!="NA" && tokens[3]!="NA" ) {
-            //offspring.insert(tokens[1]);
+
+        // validate that the ped file has a ped file format
+        if (tokens.size() < 4) vrb.error("Your ped file is not formated correctly, please for each individual I need: \n \\
+        Family ID   Individual ID   Paternal ID Maternal ID");
+
+        // only use children with two parents
+        if (tokens[2]!="NA" && tokens[3]!="NA" && tokens[2]!="0" && tokens[3]!="0") {
+
             parents.insert(tokens[2]);
             parents.insert(tokens[3]);
-            //raw_offspring.push_back(tokens[1]);
+
             offspring.push_back(tokens[1]);
             raw_parents.push_back(tokens[2]);
             raw_parents.push_back(tokens[3]);

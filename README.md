@@ -22,4 +22,4 @@ You can run an example with the following command: \
 `./bin/toy --vcf example/founders_genomes.bcf --region 22 --output example/simulated_genomes.bcf --map maps/genetic_maps.b37/chr22.b37.gmap.gz --ped example/pedigree.ped --seed 13524`
 
 ## Acknowaledgment
-Most of the source code is based on code written by @odelaneau and @srubinacci in <a href="https://github.com/odelaneau/GLIMPSE">GLIMPSE</a>.
+Most of the source code is based on code written by <a href="https://github.com/odelaneau"> @odelaneau </a> and <a href = "https://github.com/srubinacci"> @srubinacci </a> in <a href="https://github.com/odelaneau/GLIMPSE">GLIMPSE</a>.

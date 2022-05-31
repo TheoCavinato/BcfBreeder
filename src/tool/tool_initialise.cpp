@@ -14,7 +14,7 @@ void tool::read_files_and_initialise() {
 	PED.calculate_idxs();
 	int n_offspring = PED.offspring.size();
 
-	//read the genetic map for the correct chromosome -> OK
+	//read the genetic map for the correct chromosome 
 	GMAP.readGeneticMapFile(options["map"].as < string > ());
 
 }
