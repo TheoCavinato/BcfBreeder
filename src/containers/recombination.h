@@ -40,7 +40,7 @@ public:
     //ROUTINES
     void readBcfPos(string fvcf, int lower_limit, int upper_limit);
     void bpToRecRate(vector <int> &gmap_bp_pos, vector <double> &gmap_cm_pos);
-    void simulateRecombination(int n_samples, string recvalid);
+    void simulateRecombination(int n_samples, string recvalid, string phasevalid);
 };
 
 #endif

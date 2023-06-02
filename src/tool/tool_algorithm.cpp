@@ -15,10 +15,14 @@ void tool::runMainTask() {
 	REC_SITES.bpToRecRate(GMAP.pos_bp, GMAP.pos_cm);
 
 	string valid_path="None";
+	string phase_path="None";
 	if (options.count("recvalid")) valid_path = options["recvalid"].as < string > ();
-	REC_SITES.simulateRecombination(n_offspring, valid_path);
+	if (options.count("recvalid")) phase_path = options["out-phasing"].as < string > ();
+	REC_SITES.simulateRecombination(n_offspring, valid_path, phase_path);
 
 	//read bcf and write simulated individuals
 	GEN.readAndWriteGenotypes(options["vcf"].as < string > (), options["output"].as <string> (), options["region"].as < string > (), PED.founders, PED.offspring, PED.parents_idxs, REC_SITES.haploToSelect, GMAP.pos_bp[0], GMAP.pos_bp.back());
+
+
 
 }

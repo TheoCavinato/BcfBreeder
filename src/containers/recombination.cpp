@@ -86,7 +86,7 @@ void recombination::bpToRecRate(vector<int> &gmap_bp_pos, vector <double> &gmap_
 	vrb.bullet("Calculate rec rate (" + stb.str(tac.rel_time()*1.0/1000, 2) + "s)");
 }
 
-void recombination::simulateRecombination(int n_samples, string recvalid){
+void recombination::simulateRecombination(int n_samples, string recvalid, string phasevalid){
 
     tac.clock();
     vector <bool> variant_haplos;
@@ -118,10 +118,22 @@ void recombination::simulateRecombination(int n_samples, string recvalid){
 
     // if --recvalid option is on
     if (recvalid!="None") {
-        output_file fd(recvalid);
-        for(int i : save_rec_sites) fd << i << endl;
-        fd.close();
+        output_file fd_rec(recvalid);
+        for(int i : save_rec_sites) fd_rec << i << endl;
+        fd_rec.close();
     }
+    if (phasevalid!="None") {
+        output_file fd_phase(phasevalid);
+		for (vector <bool> variant: haploToSelect){
+			for (bool hap: variant) {
+                fd_phase << hap << " ";
+			}
+			fd_phase << "\n";
+		}
+        fd_phase.close();
+    }
+
+
 
 	vrb.bullet("Simulate recombination sites (" + stb.str(tac.rel_time()*1.0/1000, 2) + "s)");
 
