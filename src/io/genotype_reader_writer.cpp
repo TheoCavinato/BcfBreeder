@@ -47,6 +47,8 @@ void genotype_reader_writer::readAndWriteGenotypes(string fvcfin, string fvcfout
         }
     }
 
+	if (founders_idxs.size() != founders.size()*2) vrb.error("It seems the ped file's parents are not present in the vcf");
+
 	//for (unsigned int i : founders_idxs) cout << i << " ";
 	//cout << endl;
 	//for (unsigned int i : parents_idxs) cout << i << " "; 
@@ -132,6 +134,7 @@ void genotype_reader_writer::readAndWriteGenotypes(string fvcfin, string fvcfout
 				//cout << "Output position " << i << " and " << i+1 <<
 				//" | " << first_haplo << " " << second_haplo <<
 				//" | " << first_parent_idx_out+first_haplo << " " << second_parent_idx_out+second_haplo << endl;
+
 
 				a0 = (bcf_gt_allele(genotypes_out[first_parent_idx_out+first_haplo])==1);
 				a1 = (bcf_gt_allele(genotypes_out[second_parent_idx_out+second_haplo])==1);

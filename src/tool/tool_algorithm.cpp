@@ -17,7 +17,7 @@ void tool::runMainTask() {
 	string valid_path="None";
 	string phase_path="None";
 	if (options.count("recvalid")) valid_path = options["recvalid"].as < string > ();
-	if (options.count("recvalid")) phase_path = options["out-phasing"].as < string > ();
+	if (options.count("out-phasing")) phase_path = options["out-phasing"].as < string > ();
 	REC_SITES.simulateRecombination(n_offspring, valid_path, phase_path);
 
 	//read bcf and write simulated individuals
