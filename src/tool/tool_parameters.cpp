@@ -34,8 +34,8 @@ void tool::parse_command_line(vector < string > & args) {
 		vrb.error("Impossible to create log file [" + options["log"].as < string > () +"]");
 
 	vrb.title("SCANNER");
-	vrb.bullet("Author        : Ma grand mere");
-	vrb.bullet("Contact       : mamy@email.com");
+	vrb.bullet("Author        : Théo Cavinato (based on a structure developed by Olivier Delaneau)");
+	vrb.bullet("Contact       : theo.cavinato@gmail.com");
 	vrb.bullet("Version       : 1.0");
 	vrb.bullet("Run date      : " + tac.date());
 }
